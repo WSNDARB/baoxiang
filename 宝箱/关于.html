@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="关于百宝箱 - 了解我们的故事">
+    <meta name="keywords" content="关于我们,联系方式,网站介绍">
+    <title>关于我们 - 百宝箱</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 使用统一的基础样式 */
+        :root {
+            --primary-color: #3498db;
+            --hover-color: #2980b9;
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-color: #e1e8ed;
+            --nav-height: 60px;
+            --max-width: 1400px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            background-color: var(--card-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .navbar-menu li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        /* 关于页面样式 */
+        .about-container {
+            max-width: 800px;
+            margin: calc(var(--nav-height) + 40px) auto 40px;
+            padding: 0 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-title {
+            font-size: 32px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .about-description {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .about-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-content {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .feature-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .feature-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .about-container {
+                padding: 0 15px;
+            }
+
+            .about-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="宝箱.html" class="navbar-brand">
+                <i class="fas fa-box-open"></i>
+                百宝箱
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="宝箱.html">首页</a></li>
+                <li><a href="工具.html">工具</a></li>
+                <li><a href="学习.html">学习</a></li>
+                <li><a href="娱乐.html">娱乐</a></li>
+                <li><a href="关于.html" class="active">关于</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 关于内容区域 -->
+    <div class="about-container">
+        <div class="about-header">
+            <h1 class="about-title">关于百宝箱</h1>
+            <p class="about-description">发现更多可能，创造更多价值</p>
+        </div>
+
+        <!-- 关于我们 -->
+        <div class="about-section">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle"></i>
+                关于我们
+            </h2>
+            <div class="section-content">
+                <p>百宝箱是一个综合性的导航平台，致力于为用户提供优质的工具、学习资源和娱乐内容。我们的目标是帮助用户提高效率、获取知识、享受生活。</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <div class="feature-info">
+                            <h3>精选资源</h3>
+                            <p>严格筛选，确保每个推荐都值得信赖</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-sync-alt feature-icon"></i>
+                        <div class="feature-info">
+                            <h3>持续更新</h3>
+                            <p>定期更新内容，及时收录优质资源</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-users feature-icon"></i>
+                        <div class="feature-info">
+                            <h3>用户至上</h3>
+                            <p>重视用户体验，不断优化完善</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 联系我们 -->
+        <div class="about-section">
+            <h2 class="section-title">
+                <i class="fas fa-envelope"></i>
+                联系我们
+            </h2>
+            <div class="section-content">
+                <p>如果您有任何问题、建议或合作意向，欢迎通过以下方式联系我们：</p>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-info">
+                            <h3>电子邮件</h3>
+                            <p>contact@baobao.com</p>
+                        </div>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fab fa-weixin contact-icon"></i>
+                        <div class="contact-info">
+                            <h3>微信公众号</h3>
+                            <p>百宝箱导航</p>
+                        </div>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fab fa-qq contact-icon"></i>
+                        <div class="contact-info">
+                            <h3>QQ群</h3>
+                            <p>123456789</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 免责声明 -->
+        <div class="about-section">
+            <h2 class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                免责声明
+            </h2>
+            <div class="section-content">
+                <p>本站所收录的工具、资源均来自互联网，仅供学习和参考。如有侵权请联系我们删除。本站不对使用这些资源所造成的任何后果负责。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 导航栏交互
+        const navToggle = document.querySelector('.navbar-toggle');
+        const navMenu = document.querySelector('.navbar-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // 点击外部关闭菜单
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.navbar-toggle') && !e.target.closest('.navbar-menu')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html> 
